@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتائج الطلاب</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        button { padding: 10px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>نظام النتائج المدرسية</h1>
+    <input type="file" id="excelFile" accept=".xlsx">
+    <button onclick="loadStudents()">عرض الطلاب</button>
+    <div id="studentData"></div>
+
+    <script>
+        function loadStudents() {
+            const fileInput = document.getElementById('excelFile');
+            const file = fileInput.files[0];
+            
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // هنا يمكنك إضافة كود قراءة ملف Excel باستخدام مكتبة SheetJS
+                alert("تم تحميل الملف: " + file.name);
+                // عرض بيانات وهمية كمثال:
+                document.getElementById('studentData').innerHTML = `
+                    <h2>نتائج الطالب: أحمد</h2>
+                    <table>
+                        <tr><th>المادة</th><th>الدرجة</th></tr>
+                        <tr><td>القرآن</td><td>95</td></tr>
+                        <tr><td>الإسلامية</td><td>90</td></tr>
+                    </table>
+                    <button onclick="window.print()">طباعة كPDF</button>
+                `;
+            };
+            reader.readAsArrayBuffer(file);
+        }
+    </script>
+</body>
+</html>
