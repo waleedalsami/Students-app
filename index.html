@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق الوليد للطباعة</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>تطبيق الوليد للطباعة</h1>
+        </header>
+        
+        <div class="actions">
+            <button id="importBtn" class="btn">استيراد ملفات Excel</button>
+            <button id="exportBtn" class="btn">تصدير إلى Excel</button>
+            <button id="backupBtn" class="btn">إنشاء نسخة احتياطية</button>
+            <button id="restoreBtn" class="btn">استعادة نسخة احتياطية</button>
+            <button id="resetDB" class="btn btn-danger">إعادة تعيين قاعدة البيانات</button>
+        </div>
+        
+        <div class="filters">
+            <select id="yearSelector" class="form-control">
+                <option value="">اختر السنة الدراسية</option>
+            </select>
+            
+            <select id="classSelector" class="form-control" disabled>
+                <option value="">اختر الصف الدراسي</option>
+            </select>
+            
+            <div class="search-container">
+                <select id="searchType" class="form-control">
+                    <option value="name">بحث بالاسم</option>
+                    <option value="number">بحث بالرقم</option>
+                    <option value="subject">بحث بالمادة</option>
+                </select>
+                <input type="text" id="searchInput" class="form-control" placeholder="ابحث...">
+            </div>
+        </div>
+        
+        <div id="studentsList" class="students-list">
+            <div class="no-results">لا توجد بيانات لعرضها</div>
+        </div>
+        
+        <div id="studentDetails" class="student-details">
+            <div class="details-header">
+                <h2 id="studentNumber"></h2>
+                <h3 id="studentName"></h3>
+            </div>
+            
+            <table id="subjectsTable" class="subjects-table">
+                <thead>
+                    <tr>
+                        <th>المادة</th>
+                        <th>الدرجة</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            
+            <div class="print-options">
+                <h4>خيارات الطباعة:</h4>
+                <div>
+                    <label>اسم مدير المدرسة:</label>
+                    <input type="text" id="principalName" class="form-control" placeholder="اسم مدير المدرسة">
+                </div>
+                <div>
+                    <label>شعار المدرسة:</label>
+                    <input type="file" id="schoolLogo" accept="image/*">
+                </div>
+            </div>
+            
+            <div class="print-actions">
+                <button id="editBtn" class="btn">تعديل بيانات الطالب</button>
+                <button id="saveEditBtn" class="btn" style="display: none;">حفظ التعديلات</button>
+                <button id="printSingleBtn" class="btn">طباعة بيانات الطالب</button>
+                <button id="printAllBtn" class="btn">طباعة جميع الطلاب</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- المكتبات الخارجية -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    
+    <!-- ملف JavaScript الخاص بالتطبيق -->
+    <script src="app.js"></script>
+</body>
+</html>
